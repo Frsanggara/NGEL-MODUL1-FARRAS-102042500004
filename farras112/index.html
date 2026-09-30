@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cia Store - Katalog Produk</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* Navbar Header */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 15px 40px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .navbar .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+        }
+
+        /* Container Utama */
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 20px auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            font-size: 12px;
+            color: #ccc;
+        }
+
+        .hero h1 {
+            font-size: 28px;
+            margin: 10px 0;
+        }
+
+        .hero .btn-hero {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 16px;
+            background: white;
+            color: black;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* Header Katalog */
+        .katalog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .katalog-header h3 {
+            font-size: 20px;
+        }
+
+        .total-box {
+            background: #e0e0e0;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        /* Grid Produk (CSS Grid) */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        /* Card Produk */
+        .card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .kategori {
+            font-size: 11px;
+            color: #777;
+            text-transform: uppercase;
+        }
+
+        .nama-produk {
+            font-size: 16px;
+            margin: 5px 0 10px 0;
+        }
+
+        .badge-diskon {
+            display: inline-block;
+            background: red;
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .harga-lama {
+            text-decoration: line-through;
+            color: #888;
+            font-size: 13px;
+        }
+
+        .harga-baru {
+            font-size: 18px;
+            font-weight: bold;
+            color: #0066cc;
+            margin-bottom: 10px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 3px 8px;
+            font-size: 12px;
+            border-radius: 3px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .tersedia {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .habis {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .stok-text {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .btn-beli {
+            width: 100%;
+            padding: 8px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-beli:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #ddd;
+            margin-top: 30px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar / Header -->
+    <div class="navbar">
+        <div class="logo">Cia Store</div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#katalog">Products</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <p>CIA STORE</p>
+            <h1>Simple Tech Store.</h1>
+            <p>Temukan berbagai perangkat dan aksesoris teknologi untuk kebutuhanmu.</p>
+            <a href="#katalog" class="btn-hero">Lihat Produk</a>
+        </div>
+
+        <!-- Informasi Jumlah Produk -->
+        <div class="katalog-header" id="katalog">
+            <div>
+                <p style="font-size: 12px; color: #666;">OUR PRODUCTS</p>
+                <h3>Katalog Produk</h3>
+            </div>
+            <div class="total-box">
+                Total Produk: <b>6</b>
+            </div>
+        </div>
+
+        <!-- Grid Produk -->
+        <div class="product-grid">
+            
+            <!-- Produk 1 -->
+            <div class="card">
+                <div>
+                    <div class="kategori">Display</div>
+                    <h4 class="nama-produk">Monitor 24 Inch</h4>
+                    <span class="badge-diskon">DISKON 10%</span><br>
+                    <span class="harga-lama">Rp1.800.000</span><br>
+                    <div class="harga-baru">Rp1.620.000</div>
+                </div>
+                <div>
+                    <span class="status tersedia">Tersedia</span>
+                    <div class="stok-text">Stok: 4</div>
+                    <button class="btn-beli">Beli Sekarang</button>
+                </div>
+            </div>
+
+            <!-- Produk 2 -->
+            <div class="card">
+                <div>
+                    <div class="kategori">Komputer</div>
+                    <h4 class="nama-produk">Laptop Productivity</h4>
+                    <span class="badge-diskon">DISKON 10%</span><br>
+                    <span class="harga-lama">Rp8.500.000</span><br>
+                    <div class="harga-baru">Rp7.650.000</div>
+                </div>
+                <div>
+                    <span class="status tersedia">Tersedia</span>
+                    <div class="stok-text">Stok: 3</div>
+                    <button class="btn-beli">Beli Sekarang</button>
+                </div>
+            </div>
+
+            <!-- Produk 3 -->
+            <div class="card">
+                <div>
+                    <div class="kategori">Aksesoris</div>
+                    <h4 class="nama-produk">Mouse Wireless</h4>
+                    <div class="harga-baru">Rp250.000</div>
+                </div>
+                <div>
+                    <span class="status tersedia">Tersedia</span>
+                    <div class="stok-text">Stok: 10</div>
+                    <button class="btn-beli">Beli Sekarang</button>
+                </div>
+            </div>
+
+            <!-- Produk 4 -->
+            <div class="card">
+                <div>
+                    <div class="kategori">Aksesoris</div>
+                    <h4 class="nama-produk">Keyboard Mekanikal</h4>
+                    <div class="harga-baru">Rp750.000</div>
+                </div>
+                <div>
+                    <span class="status habis">Stok Habis</span>
+                    <div class="stok-text">Stok: 0</div>
+                    <button class="btn-beli" disabled>Stok Habis</button>
+                </div>
+            </div>
+
+            <!-- Produk 5 -->
+            <div class="card">
+                <div>
+                    <div class="kategori">Audio</div>
+                    <h4 class="nama-produk">Headset Gaming</h4>
+                    <span class="badge-diskon">DISKON 10%</span><br>
+                    <span class="harga-lama">Rp1.200.000</span><br>
+                    <div class="harga-baru">Rp1.080.000</div>
+                </div>
+                <div>
+                    <span class="status tersedia">Tersedia</span>
+                    <div class="stok-text">Stok: 5</div>
+                    <button class="btn-beli">Beli Sekarang</button>
+                </div>
+            </div>
+
+            <!-- Produk 6 -->
+            <div class="card">
+                <div>
+                    <div class="kategori">Penyimpanan</div>
+                    <h4 class="nama-produk">USB Flashdisk 64GB</h4>
+                    <div class="harga-baru">Rp150.000</div>
+                </div>
+                <div>
+                    <span class="status habis">Stok Habis</span>
+                    <div class="stok-text">Stok: 0</div>
+                    <button class="btn-beli" disabled>Stok Habis</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Cia Store. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
